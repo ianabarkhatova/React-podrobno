@@ -5,18 +5,15 @@ import Accordion from './components/Accordion/Accordion';
 import {Rating} from './components/Rating/Rating';
 import OnOff from "./components/OnOff/OnOff";
 import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 
 function App() {
   return (
-    
-    <div>
-
-        <OnOff/>
-        <OnOff/>
+    <div className={"App"}>
         <OnOff/>
 
-        <UncontrolledAccordion titleValue={"Menu-1"}/> {/* Step 1 */}
-        <UncontrolledAccordion titleValue={"Menu-2"}/> {/* Step 1 */}
+        <UncontrolledAccordion titleValue={"Menu"}/> {/* Step 1 */}
+
       {/*<PageTitle title={"This is the PageTitle component"} />*/}
       {/*<PageTitle title={"My friends"} />*/}
       {/*Article 1*/}
@@ -25,13 +22,16 @@ function App() {
       {/*<Accordion titleValue={"Menu-1"} closed={true}/> /!* Step 1 *!/*/}
       {/*<Accordion titleValue={"Menu-2"} closed={false}/> /!* Step 1 *!/*/}
 
-      {/*/!*Article 2*!/*/}
+      {/*Article 2*/}
       {/*<Rating value={0}/>*/}
       {/*<Rating value={1}/>*/}
       {/*<Rating value={2}/>*/}
       {/*<Rating value={3}/>*/}
       {/*<Rating value={4}/>*/}
       {/*<Rating value={5}/>*/}
+
+        Article 2
+        <UncontrolledRating/>
 
     </div>
   );
