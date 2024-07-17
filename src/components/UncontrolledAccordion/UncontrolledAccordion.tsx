@@ -5,7 +5,7 @@ type AccordionPropsType = {
     titleValue: string
 }
 
-function UncontrolledAccordion(props: AccordionPropsType) {
+export function UncontrolledAccordion(props: AccordionPropsType) {
 
     let[closed, setClosed] = useState(true)
 
@@ -44,4 +44,3 @@ function AccordionBody() {
     )
 }
 
-export default UncontrolledAccordion;

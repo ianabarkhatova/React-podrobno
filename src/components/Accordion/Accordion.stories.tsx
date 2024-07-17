@@ -1,4 +1,3 @@
-import type {Meta, StoryObj} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 
 import {Accordion} from './Accordion';
@@ -31,7 +30,7 @@ export const ClosedAccordion = () => {
                       onChange={onChangeHandler}/>
 }
 
-export const openedAccordion = () => {
+export const OpenedAccordion = () => {
     return <Accordion titleValue={"Opened Accordion"}
                       closed={false}
                       onChange={() => {
@@ -40,7 +39,7 @@ export const openedAccordion = () => {
 
 export const AccordionDemo = () => {
     const [closed, setClosed] = useState(false)
-    return <Accordion titleValue={"Accordion Dmo"}
+    return <Accordion titleValue={"Accordion Demo"}
                       closed={closed}
                       onChange={() => {
                           setClosed(!closed)

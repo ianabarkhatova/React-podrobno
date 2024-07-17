@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Rating, RatingValuePropsType} from './components/Rating/Rating';
-import UncontrolledOnOff from "./components/UncontrolledOnOff/UncontrolledOnOff";
-import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
-import OnOff from "./components/OnOff/OnOff";
+import {OnOff} from "./components/OnOff/OnOff";
 import {Accordion} from "./components/Accordion/Accordion";
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
             {/*<PageTitle title={"This is the PageTitle component"} />*/}
             {/*<PageTitle title={"My friends"} />*/}
             {/*Article 1*/}
-            {/*<Rating value={3}/> */}
             {/* Passing props to Accordion */}
             <Accordion titleValue={"Menu-1"}
                        closed={accClosed}
@@ -40,10 +38,10 @@ function App() {
             {/*Article 2*/}
             {/*<UncontrolledRating/>*/}
 
-            {/*<Rating value={value}*/}
-            {/*        onClick={setValue}*/}
-            {/*/>*/}
-            {/*<OnOff on={on} onChange={(on) => {setOn(on)}}/>*/}
+            <Rating value={value}
+                    onClick={setValue}
+            />
+            <OnOff on={on} onChange={(on) => {setOn(on)}}/>
             <UncontrolledOnOff onChange={setOn}/> {on.toString()}
 
         </div>
