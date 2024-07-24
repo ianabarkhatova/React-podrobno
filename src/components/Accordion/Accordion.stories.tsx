@@ -17,24 +17,32 @@ import React, {useState} from "react";
 //     },
 // }
 
-export default  {
+export default {
     component: Accordion
 }
 
 const onChangeHandler = action('onChange')
+const onClickCallback = action('some item was clicked')
 
 
 export const ClosedAccordion = () => {
     return <Accordion titleValue={"Closed Accordion"}
                       closed={true}
-                      onChange={onChangeHandler}/>
+                      onChange={onChangeHandler}
+                      items={[]}
+                      onClick={onClickCallback}/>
 }
 
 export const OpenedAccordion = () => {
     return <Accordion titleValue={"Opened Accordion"}
                       closed={false}
                       onChange={() => {
-                      }}/>
+                      }}
+                      items={[
+                          {title: 'Yana', value: 1},
+                          {title: 'Daniel', value: 2},
+                          {title: 'Lisa', value: 3}]}
+                      onClick={onClickCallback}/>
 }
 
 export const AccordionDemo = () => {
@@ -43,5 +51,12 @@ export const AccordionDemo = () => {
                       closed={closed}
                       onChange={() => {
                           setClosed(!closed)
+                      }}
+                      items={[
+                          {title: 'Yana', value: 1},
+                          {title: 'Daniel', value: 2},
+                          {title: 'Lisa', value: 3}]}
+                      onClick={(value) => {
+                          alert(`user with id ${value} should be happy`)
                       }}/>
 }

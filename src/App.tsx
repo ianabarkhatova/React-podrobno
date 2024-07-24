@@ -22,9 +22,9 @@ function App() {
             {/*<PageTitle title={"My friends"} />*/}
             {/*Article 1*/}
             {/* Passing props to Accordion */}
-            <Accordion titleValue={"Menu-1"}
-                       closed={accClosed}
-                       onChange={()=> setAccClosed(!accClosed)}/>
+            {/*<Accordion titleValue={"Menu-1"}*/}
+            {/*           closed={accClosed}*/}
+            {/*           onChange={()=> setAccClosed(!accClosed)}/>*/}
             {/*<Accordion titleValue={"Menu-2"} closed={false}/> /!* Step 1 *!/*/}
 
             {/*Article 2*/}

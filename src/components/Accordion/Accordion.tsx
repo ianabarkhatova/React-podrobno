@@ -1,26 +1,37 @@
 import React from 'react';
 
-//рядом с компонентом лежит тип, который определяет, что компонент должен принимать:
 type AccordionPropsType = {
     titleValue: string
     closed?: boolean
     onChange: () => void
+    items: ItemType[]
+    onClick: (value: any) => void
 }
 
-export function Accordion(props: AccordionPropsType) {
-            return <div>
-                <AccordionTitle
-                    title={props.titleValue}
-                    onChange={props.onChange}/>
-                { !props.closed && <AccordionBody/> }
-            </div>
+type AccordionBodyPropsType = {
+    items: ItemType[]
+    onClick: (value: any) => void
 }
-
 
 type AccordionTitlePropsType = {
     title: string
     onChange: () => void
 }
+
+type ItemType = {
+    title: string
+    value: any
+}
+
+export function Accordion(props: AccordionPropsType) {
+    return <div>
+        <AccordionTitle
+            title={props.titleValue}
+            onChange={props.onChange}/>
+        {!props.closed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+    </div>
+}
+
 
 function AccordionTitle(props: AccordionTitlePropsType) {
 
@@ -29,16 +40,12 @@ function AccordionTitle(props: AccordionTitlePropsType) {
     )
 }
 
-function AccordionBody() {
+function AccordionBody(props: AccordionBodyPropsType) {
 
     return (
-        <div>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-        </div>
+        <ul>
+            {props.items.map((i, index) => <li onClick={()=> {props.onClick(i.value)}} key={index}>{i.title}</li>)}
+        </ul>
     )
 }
 
