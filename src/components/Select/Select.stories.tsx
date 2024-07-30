@@ -1,13 +1,47 @@
-// @flow 
-import * as React from 'react';
+import {action} from '@storybook/addon-actions';
+import {Select} from "./Select";
+import {useState} from "react";
 
-type Props = {
-    
+export default {
+    title: "Select",
+    component: Select
 };
-export const Select = (props: Props) => {
+
+
+export const SelectDefault = () => {
+
+    const [value, setValue] = useState('2')
+
     return (
-        <div>
+        <Select
+            onChange={setValue}
+            value={value}
+            items={[
+                {value: '1', title: 'Vilnius'},
+                {value: '2', title: 'Kyiv'},
+                {value: '3', title: 'Amsterdam'}
+            ]}
+        />
+        )
+}
 
-        </div>
-    );
-};
+
+export const SelectWithoutValue = () => {
+
+    const [value, setValue] = useState(null)
+
+    return (
+        <Select
+            onChange={setValue}
+            value={value}
+            items={[
+                {value: '1', title: 'Vilnius'},
+                {value: '2', title: 'Kyiv'},
+                {value: '3', title: 'Amsterdam'}
+            ]}
+        />
+    )
+}
+
+
+
