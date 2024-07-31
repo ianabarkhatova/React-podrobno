@@ -1,22 +1,21 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
+import {reducer, toggle_closed} from "./reducer";
 
-//рядом с компонентом лежит тип, который определяет, что компонент должен принимать:
 type AccordionPropsType = {
     titleValue: string
 }
 
 export function UncontrolledAccordion(props: AccordionPropsType) {
 
-    let[closed, setClosed] = useState(true)
+    let [state, dispatch] = useReducer(reducer, {closed: false})
 
-    const toggleAccordion = () => {
-        setClosed(!closed)
-    }
 
     return <div>
-        <AccordionTitle title={props.titleValue} onClick={toggleAccordion}/>
-        {/*<button onClick={toggleAccordion}>Toggle</button>*/}
-        {!closed && <AccordionBody/>}
+        {/*<AccordionTitle title={props.titleValue} onClick={toggleAccordion}/>*/}
+        <AccordionTitle title={props.titleValue} onClick={() => {
+            dispatch({type: toggle_closed})
+        }}/>
+        {!state.closed && <AccordionBody/>}
     </div>
 }
 
@@ -29,7 +28,8 @@ type AccordionTitlePropsType = {
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <div><h3 onClick={props.onClick}>{props.title}</h3></div> // Step 5
-    )}
+    )
+}
 
 function AccordionBody() {
 
