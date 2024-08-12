@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 
 
 export default {
@@ -47,7 +47,7 @@ export const difficultCountingExample = () => {
     </>
 }
 
-const UsersSecret = (props: {users: Array<string>}) => {
+const UsersSecret = (props: { users: Array<string> }) => {
     debugger
     console.log('UsersSecret')
     return <div> {
@@ -59,10 +59,10 @@ const Users = React.memo(UsersSecret)
 
 export const HelpsReactMemo = () => {
     console.log('Helps React Memo')
-    const[count, setCount] = useState(0)
-    const[users, setUsers] = useState(['Yana', 'Daniel', 'Lisa'])
+    const [count, setCount] = useState(0)
+    const [users, setUsers] = useState(['Yana', 'Daniel', 'Lisa'])
 
-    const newArray = useMemo(()=> {
+    const newArray = useMemo(() => {
         return users.filter(u => u.toLowerCase().indexOf('l') > -1);
     }, [users])
 
@@ -75,10 +75,57 @@ export const HelpsReactMemo = () => {
     }
 
     return <>
-        <button onClick={() => {setCount(count + 1)}}>+</button>
+        <button onClick={() => {
+            setCount(count + 1)
+        }}>+
+        </button>
         <button onClick={() => addUser()}>add user</button>
         {count}
         <Users users={newArray}/>
     </>
 }
 
+//addBook - UseCallback
+
+const BooksSecret = (props: { addBook: () => void }) => {
+
+    console.log('BooksSecret')
+    return <div>
+        <button onClick={() => props.addBook()}>add book</button>
+    </div>
+}
+
+const Book = React.memo(BooksSecret)
+
+export const LikeUseCallback = () => {
+    console.log('LikeUseCallback')
+    const [count, setCount] = useState(0)
+    const [books, setBooks] = useState(['React', 'HTML', 'CSS', "JS"])
+
+    const addBook = () => {
+        console.log(books)
+        const newBooks = [
+            ...books,
+            'Angular' + new Date().getTime()
+        ]
+        setBooks(newBooks)
+    }
+
+    const memoizedAddBook = useMemo(() => {
+        return addBook
+    }, [books])
+
+    const memoizedAddBook2 = useCallback(() => {
+        addBook()
+    },[books])
+
+
+    return <>
+        <button onClick={() => {
+            setCount(count + 1)
+        }}>+
+        </button>
+        {count}
+        <Book addBook={memoizedAddBook2}/>
+    </>
+}
